@@ -1,0 +1,105 @@
+class Solution
+
+{
+
+public:
+
+ 
+
+  int maxgcdd(Node*root,int &ans,int &g)
+
+ 
+
+   {
+
+ 
+
+       if(root==NULL)
+
+ 
+
+        return 0;
+
+ 
+
+        
+
+ 
+
+        if(root->left==NULL && root->right==NULL)
+
+ 
+
+         return root->data;
+
+ 
+
+         
+
+ 
+
+        
+
+ 
+
+        int left=maxgcdd(root->left,ans,g);
+
+ 
+
+        int right=maxgcdd(root->right,ans,g);
+
+ 
+
+        
+
+ 
+
+      if( left!=0 && right!=0 && __gcd(left,right)>g )
+
+ 
+
+        {  
+
+ 
+
+                g=__gcd(left,right);
+
+ 
+
+                ans=root->data;
+
+ 
+
+        }
+
+ 
+
+        
+
+ 
+
+        return root->data;
+
+ 
+
+   }
+
+    int maxGCD( Node* root)
+
+    {
+
+       int g=0;
+
+       int ans=0;
+
+       maxgcdd(root,ans,g);
+
+       
+
+       return ans;
+
+       
+
+    }
+
+};
