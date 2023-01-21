@@ -10,6 +10,7 @@ This repository contains a collection of problems and solutions from GeeksforGee
 * Mathematics
 * Logical and Aptitude
 * Programming
+
 The solutions provided are implemented in C++, but users are encouraged to try solving the problems in other languages as well.
 
 To access the problems and solutions, simply navigate to the appropriate folder and open the respective file. The file name will indicate the problem name and the date it was added.
