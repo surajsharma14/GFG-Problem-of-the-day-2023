@@ -5,11 +5,11 @@ Welcome to the GFG Problem of the Day repository!
 
 This repository contains a collection of problems and solutions from GeeksforGeeks, a popular platform for learning computer science and programming. Each day, a new problem is added to the repository with its corresponding solution. The problems are selected from various categories such as:
 
-Data Structures
-Algorithms
-Mathematics
-Logical and Aptitude
-Programming
+* Data Structures
+* Algorithms
+* Mathematics
+* Logical and Aptitude
+* Programming
 The solutions provided are implemented in C++, but users are encouraged to try solving the problems in other languages as well.
 
 To access the problems and solutions, simply navigate to the appropriate folder and open the respective file. The file name will indicate the problem name and the date it was added.
