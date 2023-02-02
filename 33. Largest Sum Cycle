@@ -1,0 +1,42 @@
+class Solution
+{
+  public:
+  void dfs(int i,vector<int> &par,vector<vector<int>> &adj,vector<int> &vis,vector<int> &dfsVis,long long &ans){
+      vis[i]=1;
+      dfsVis[i]=1;
+      for(auto &x:adj[i]){
+          if(!vis[x]){
+              par[x]=i;
+              dfs(x,par,adj,vis,dfsVis,ans);
+          }
+          else if(dfsVis[x]){
+              //cycle found
+              par[x]=i;
+              int y=x;
+              long long cycleLen=0;
+              do{
+                  //cout<<y<<'\n';
+                  y=par[y];
+                  cycleLen+=y;
+              }while(y!=x);
+              ans=max(ans,cycleLen);
+          }
+      }
+      dfsVis[i]=0;
+  }
+  long long largestSumCycle(int N, vector<int> Edge)
+  {
+    // code here
+    vector<vector<int>> adj(N);
+    for(int i=0;i<Edge.size();i++){
+        if(Edge[i]!=-1)
+        adj[i].push_back(Edge[i]);
+    }
+    vector<int> vis(N,0),dfsVis(N,0),par(N,-1);
+    long long ans=-1;
+    for(int i=0;i<N;i++)
+    if(!vis[i])
+    dfs(i,par,adj,vis,dfsVis,ans);
+    return ans;
+  }
+};
