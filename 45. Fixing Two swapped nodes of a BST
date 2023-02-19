@@ -1,0 +1,41 @@
+class Solution {
+  public:
+    struct Node *correctBST(struct Node *root) {
+       stack<struct Node*> s;
+        
+        struct Node* prev;
+        struct Node* first;
+        struct Node* second;
+        
+        struct Node* t=root;
+        
+        while(!s.empty() || t){
+            
+            while(t){
+                s.push(t);
+                t=t->left;
+            }
+            
+             t=s.top(); s.pop();
+            
+             if(prev){
+                
+             if(prev->data > t->data){
+                
+                if(!first) {
+                    first=prev;
+                    second=t;   
+                 }
+                 else  second=t;
+                 
+                }
+            }
+            
+            prev=t;
+            t=t->right;
+        }
+        
+        swap(first->data,second->data);
+        return root;
+    }
+};
