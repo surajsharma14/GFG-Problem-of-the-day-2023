@@ -1,0 +1,37 @@
+class Solution{
+    public:
+    void connect(Node *root)
+    {
+       Node* curr = root;
+
+       queue<pair<Node*,int>>q;
+
+       q.push({curr,0});
+
+       
+
+       while(!q.empty()){
+
+          auto it = q.front();
+
+          q.pop();
+
+          Node* curNode = it.first;
+
+          int lvl = it.second;
+
+          if(lvl==0) curNode->nextRight = NULL;
+
+          else if(!q.empty() and q.front().second==lvl) curNode ->nextRight = q.front().first;
+
+          else curNode ->nextRight = NULL;
+
+          if(curNode->left) q.push({curNode->left,lvl+1});
+
+          if(curNode->right) q.push({curNode->right,lvl+1});
+
+       }
+
+ 
+    }    
+};
