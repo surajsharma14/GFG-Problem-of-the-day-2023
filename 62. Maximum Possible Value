@@ -1,0 +1,38 @@
+class Solution {
+  public:
+    long long maxPossibleValue(int N,vector<int> A, vector<int> B) {
+        long long sum=0;
+
+        int cnt4=0;
+
+       int mn=INT_MAX;
+
+       long long temp=0;
+
+       for(int i=0;i<N;i++)
+
+       {
+
+           if(B[i]>=2)
+
+           {
+
+           mn=min(mn,A[i]);
+
+           temp=temp+(B[i]/2);
+
+           sum=sum+2*((B[i]/2)*A[i]);
+
+           }
+
+       }
+
+         if(temp%2!=0)
+
+         sum=sum-2*mn;
+
+         
+
+       return sum;
+    }
+};
