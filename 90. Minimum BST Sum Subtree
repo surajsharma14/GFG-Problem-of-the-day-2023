@@ -1,0 +1,60 @@
+class Solution {
+public:
+    public:
+    int minSubtreeSumBST(int target, Node *root) {
+        int minSubtreeLen = INT_MAX;
+        findSubtreeSumBST(target, root, minSubtreeLen);
+        return minSubtreeLen == INT_MAX ? -1 : minSubtreeLen;
+    }
+
+private:
+    void findSubtreeSumBST(int target, Node* root, int& minSubtreeLen) {
+        if (!root) {
+            return;
+        }
+
+        if (isBST(root)) {
+            int sum = getSum(root);
+            if (sum == target) {
+                int len = getSubtreeLength(root);
+                minSubtreeLen = min(minSubtreeLen, len);
+            }
+        }
+
+        findSubtreeSumBST(target, root->left, minSubtreeLen);
+        findSubtreeSumBST(target, root->right, minSubtreeLen);
+    }
+
+    bool isBST(Node* root) {
+        return isBSTUtil(root, INT_MIN, INT_MAX);
+    }
+
+    bool isBSTUtil(Node* root, int minValue, int maxValue) {
+        if (!root) {
+            return true;
+        }
+
+        if (root->data < minValue || root->data > maxValue) {
+            return false;
+        }
+
+        return isBSTUtil(root->left, minValue, root->data - 1) &&
+               isBSTUtil(root->right, root->data + 1, maxValue);
+    }
+
+    int getSum(Node* root) {
+        if (!root) {
+            return 0;
+        }
+
+        return root->data + getSum(root->left) + getSum(root->right);
+    }
+
+    int getSubtreeLength(Node* root) {
+        if (!root) {
+            return 0;
+        }
+
+        return 1 + getSubtreeLength(root->left) + getSubtreeLength(root->right);
+    }
+};
