@@ -1,0 +1,27 @@
+
+salmankhader123
+16 minutes ago
+
+class Solution{
+    public:
+    bool isValid(int reach,int n,int k,vector<int>&arr){
+        long long int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            if(sum>=reach){
+                sum=0;
+                k--;
+            }
+        }
+        return k<=0;
+    }
+    int maxSweetness(vector<int>& sweetness, int N, int K) {
+        int s=0,e=INT_MAX,ans;
+        while(s<=e){
+            int mid=s+(e-s)/2;
+            if(isValid(mid,N,K+1,sweetness))ans=mid,s=mid+1;
+            else e=mid-1;
+        }
+        return ans;
+    }
+};
