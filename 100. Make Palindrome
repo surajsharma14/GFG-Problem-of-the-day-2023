@@ -1,0 +1,19 @@
+class Solution{
+public:
+    bool makePalindrome(int n,vector<string> &arr){
+        unordered_map<string,int>mp;
+        for(auto str : arr){
+            mp[str]++;
+        }
+        for(auto i: arr){
+            reverse(i.begin(), i.end());
+            if(mp[i]>0){
+                mp[i]--;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+};
