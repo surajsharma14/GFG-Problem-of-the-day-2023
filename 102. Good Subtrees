@@ -1,0 +1,21 @@
+class Solution{
+public:
+    int goodSubtrees(Node *root,int k){
+        // Code here
+        int ans = 0;
+        solve(root, k, ans);
+        return ans;
+    }
+    
+    unordered_set<int> solve(Node* root, int k, int &ans) {
+        unordered_set<int> distinct;
+        if(!root) return distinct;
+        distinct.insert(root -> data);
+        unordered_set<int> l = solve(root -> left, k, ans);
+        unordered_set<int> r = solve(root -> right, k, ans);
+        distinct.insert(l.begin(), l.end());
+        distinct.insert(r.begin(), r.end());
+        if(distinct.size() <= k) ans++;
+        return distinct;
+    }
+};
