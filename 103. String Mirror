@@ -1,0 +1,17 @@
+class Solution {
+    public static String stringMirror(String str) {
+        // code here
+        StringBuffer s=new StringBuffer();
+        StringBuffer ans=new StringBuffer();
+        s.append(str.charAt(0));
+        for(int i=1;i<str.length();i++){
+            if(str.charAt(i-1)<str.charAt(i)) break;
+            if(str.charAt(i-1)>str.charAt(i)) s.append(str.charAt(i));
+            if(str.charAt(i-1)==str.charAt(i)&&(i-1)==0) break;
+            if(str.charAt(i-1)==str.charAt(i)) s.append(str.charAt(i));
+        }
+        ans.append(s);
+        ans.append(s.reverse());
+        return ans.toString();
+    }
+}
