@@ -1,0 +1,30 @@
+class Solution{
+public:
+    int isPossible(int n, int m, string s){
+        int c1=0,c2=0,c3=0,c4=0;
+        for(auto x:s){
+            if(x=='L'){
+                c1++;
+            if(c2)c2--;
+            }
+           if(x=='R'){
+                c2++;
+            if(c1)c1--;
+           }
+            if(c1>=m || c2 >=m)
+                  return 0;
+           
+            if(x=='U'){
+                c3++;
+            if(c4)c4--;
+            }
+            if(x=='D'){
+                c4++;
+            if(c3)c3--;
+             }
+        if(c3>=n || c4 >=n)
+            return 0;
+        }
+        return 1;
+    }
+};
