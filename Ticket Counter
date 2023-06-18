@@ -1,0 +1,14 @@
+class Solution {
+  public:
+    int distributeTicket(int N, int K) {
+         int l=0,r=N;
+        while( (r-l)>=K)
+        {
+            l+=K;
+            if(r==l)return l;
+            if((r-l)>K)r-=K;
+            else return l+1;
+        }
+        return r;
+    }
+};
