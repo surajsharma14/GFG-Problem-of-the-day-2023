@@ -1,0 +1,17 @@
+class Solution {
+    int height(Node node) 
+    {
+        if(node == null){
+            return 0;
+        }
+        int l_height;
+        int r_height;
+        
+        
+        l_height = height(node.left);
+        r_height = height(node.right);
+        
+        int mh = Math.max(l_height,r_height);
+        return mh+1;
+    }
+}
