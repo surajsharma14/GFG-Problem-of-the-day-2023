@@ -1,0 +1,42 @@
+class Solution
+{
+    public:
+    //function to check for an element in a BST
+     int checkInTree(Node* nodee, int x){
+         if (nodee == nullptr){return 0;}
+         if (nodee-> data == x){return 1;}
+         
+         
+         if (nodee-> data < x){return checkInTree(nodee-> right, x);}
+         if (nodee-> data > x){return checkInTree(nodee-> left, x);}
+     }
+
+     /*initialising a temporary variable to use for storing data in a node of a tree
+     to compare with the elements of the other tree */
+     int temp;
+     
+     //function to traverse each element
+     void inOrderTraversal(Node* node1, Node* node2,vector <int>& vec){
+         if (node1 == nullptr){return;}
+         
+         inOrderTraversal(node1->left, node2, vec);
+           temp = node1-> data;
+           int result = checkInTree(node2, temp);
+           //if the element matches it is stored in the vector
+         if(result){
+             vec.push_back(temp);
+         }
+        inOrderTraversal(node1-> right, node2, vec);
+    }
+    
+    
+    //just to implement the previous functions
+    vector <int> findCommon(Node *root1, Node *root2){
+     
+     vector <int> vecto;
+     
+     inOrderTraversal(root1,root2,vecto);
+     
+     return vecto;
+    }
+};
