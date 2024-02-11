@@ -1,0 +1,24 @@
+class Solution{
+public:
+    vector<int> recamanSequence(int n){
+        // code here
+        vector<int> ans;
+        ans.push_back(0);
+        
+        unordered_map<int,int> mp;
+        mp[0]++;
+        
+        for(int i=1; i<n; i++){
+            int num = ans.back()-i;
+            if((num < 0) || (mp.find(num)!=mp.end())){
+                num = ans.back()+i;
+            }
+            
+            ans.push_back(num);
+            mp[num]++;
+        }
+        
+        return ans;
+    }
+};
+
