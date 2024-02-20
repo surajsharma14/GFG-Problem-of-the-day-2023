@@ -1,0 +1,21 @@
+class Solution
+{
+public:
+    int wordBreak(int N, string s, vector<string> &dictionary) 
+    {
+        int n = s.size();
+        vector<int> dp(n + 1);
+        dp[n] = true;
+        
+        for(int i = n - 1; i >= 0; i--) 
+        {
+            for(auto word: dictionary) 
+            {
+                if(i + word.size() <= n and s.substr(i, word.size()) == word and dp[i + word.size()])
+                    dp[i] = true;
+            }
+        }
+        
+        return dp[0];
+    }
+};
