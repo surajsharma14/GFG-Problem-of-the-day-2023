@@ -1,0 +1,43 @@
+class Solution
+{
+    public:
+    // your task is to complete this function
+    void sort(Node **head)
+    {
+         Node* odd=*head;
+         Node* even=(*head)->next;
+         Node* evenhead=even;
+
+//checking if linkedlist is empty
+         if((*head==NULL ||(*head)->next==NULL))
+         {
+             return;
+         }
+
+//dividing odd and even linkedlist
+         while(even!=NULL && even->next!=NULL)
+         {
+             odd->next=odd->next->next;
+             even->next=even->next->next;
+             odd=odd->next;
+             even=even->next;
+         }
+
+//Reversing Even linkedlist
+         Node* temp=evenhead;
+         Node* prev=NULL;
+         Node* front;
+         while(temp!=NULL)
+         {
+             front=temp->next;
+             temp->next=prev;
+             prev=temp;
+             temp=front;
+         }
+         
+
+//adding reversed even linkedlist to end of odd linkedlist
+         odd->next=prev;
+         
+    }
+};
